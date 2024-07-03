@@ -17,5 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
           {message: "User could not be created. # {current_user.errors.full_messages.to_sentence}"},
           status: :unprocessable_entity
       }
+    end
   end
 end
