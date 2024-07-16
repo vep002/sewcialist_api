@@ -13,9 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }
     else
       render json: { 
-        status: 
-          {message: "User could not be created. # {current_user.errors.full_messages.to_sentence}"},
-          status: :unprocessable_entity
+        status: { code: 422, message: 'User could not be created.'},
+        message:"User could not be created. #{current_user.errors.full_messages.to_sentence}"
       }
     end
   end

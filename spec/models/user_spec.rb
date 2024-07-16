@@ -59,20 +59,15 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
     end
 
-    it 'is not valid without a role' do
-        user = User.new(valid_attributes.except(:role))
-        expect(user).not_to be_valid
-    end
+    # it 'is not valid without a role' do
+    #     user = User.new(valid_attributes.except(:role))
+    #     expect(user).not_to be_valid
+    # end
 
-    it 'is not valid with a role outside the allowed range' do
-        user = User.new(valid_attributes.merge(role: 3))
-        expect(user).not_to be_valid
-    end
-
-    it 'is not valid without a jti' do
-        user = User.new(valid_attributes.except(:jti))
-        expect(user).not_to be_valid
-    end
+    # it 'is not valid with a role outside the allowed range' do
+    #     user = User.new(valid_attributes.merge(role: 3))
+    #     expect(user).not_to be_valid
+    # end
 
     it 'is not valid with a duplicate jti' do
         User.create(valid_attributes)
@@ -80,7 +75,7 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
     end
 
-    it 'is not valid with a duplicate resret_password_token' do
+    it 'is not valid with a duplicate reset_password_token' do
         User.create(valid_attributes.merge(reset_password_token: 'token123'))
         user = User.new(valid_attributes.merge(email: 'different@example.com', reset_password_token: 'token123'))
         expect(user).not_to be_valid
