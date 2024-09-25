@@ -23,7 +23,8 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        project = current_user.projects.find(params[:id]) project.destroy
+        @project = current_user.projects.find(params[:id]) 
+        @project.destroy
         render json: { message: 'Project deleted successfully' }, status: :ok
     end
     
