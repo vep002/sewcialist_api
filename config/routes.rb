@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   resources :projects, only: [:index, :show, :create, :destroy, :update] do
-    resources :steps, only: [:destroy]
+    resources :steps, only: [:create, :destroy, :update]
   end
 end

@@ -45,10 +45,10 @@ end
 
 # Create four steps for the in-progress project
 steps = [
-  { description: 'Step 1: Gather materials', start_date: '2024-01-01', end_date: '2024-01-05', completed: true, project: in_progress_project },
-  { description: 'Step 2: Start crafting', start_date: '2024-01-06', end_date: '2024-01-10', completed: false, project: in_progress_project },
-  { description: 'Step 3: Midway check', start_date: '2024-01-11', end_date: '2024-01-15', completed: false, project: in_progress_project },
-  { description: 'Step 4: Finishing touches', start_date: '2024-01-16', end_date: '2024-01-20', completed: false, project: in_progress_project }
+  { description: 'Gather materials', start_date: '2024-01-01', end_date: '2024-01-05', completed: true, project: in_progress_project },
+  { description: 'Start crafting', start_date: '2024-01-06', end_date: '2024-01-10', completed: false, project: in_progress_project },
+  { description: 'Midway check', start_date: '2024-01-11', end_date: '2024-01-15', completed: false, project: in_progress_project },
+  { description: 'Finishing touches', start_date: '2024-01-16', end_date: '2024-01-20', completed: false, project: in_progress_project }
 ]
 
 steps.each do |step|
