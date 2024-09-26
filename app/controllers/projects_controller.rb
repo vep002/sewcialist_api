@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
     def show
         @project = Project.find(params[:id])
         @steps = @project.steps
+        render json:@project, status: :ok
     end
     
     def new
@@ -22,6 +23,15 @@ class ProjectsController < ApplicationController
         redirect_to projects_path
     end
 
+    def update
+        @project = current_user.projects.find(params[:id])
+        if @project.update(project_params)
+            render json: @project, status: :ok
+        else
+            render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     def destroy
         @project = current_user.projects.find(params[:id]) 
         @project.destroy
@@ -31,6 +41,6 @@ class ProjectsController < ApplicationController
     private
     
     def project_params
-        params.require(:project).permit(:name)
+        params.require(:project).permit(:name, :title, :description, :status, :user_id, :steps)
     end
 end

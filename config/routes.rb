@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
-  resources :projects, only: [:index, :show, :create, :destroy]
+  resources :projects, only: [:index, :show, :create, :destroy, :update] do
+    resources :steps, only: [:destroy]
+  end
 end
