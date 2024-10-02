@@ -10,6 +10,15 @@ class MaterialsController < ApplicationController
         add_material_to_project
     end
 
+    def update
+        material = current_user.materials.find(params[:id])
+        if material.update(material_params)
+            render json: material, status: :ok
+        else
+            render json: { errors: material.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     def destroy
         material = current_user.materials.find(params[:id])
         material.destroy
@@ -31,7 +40,7 @@ class MaterialsController < ApplicationController
 
     private
     def material_params
-        params.require(:material).permit(:name, :quantity, :unit, :user_id)
+        params.require(:material).permit(:name, :quantity, :user_id)
     end
     
 end
