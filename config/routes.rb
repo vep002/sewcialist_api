@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :steps, :materials, only: [:create, :destroy, :update]
     resources  only: [:add_material_to_project]
   end
+
+  post '/check_user_exists', to: 'users/users#check_user_exists'
 end
