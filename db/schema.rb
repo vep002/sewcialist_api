@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_03_005829) do
+ActiveRecord::Schema.define(version: 2024_12_04_182119) do
 
   create_table "materials", force: :cascade do |t|
     t.string "name"
@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(version: 2024_07_03_005829) do
   create_table "photos", force: :cascade do |t|
     t.string "image_url"
     t.text "description"
-    t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_photos_on_project_id"
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable"
   end
 
   create_table "project_materials", force: :cascade do |t|
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(version: 2024_07_03_005829) do
   end
 
   add_foreign_key "materials", "users"
-  add_foreign_key "photos", "projects"
   add_foreign_key "project_materials", "materials"
   add_foreign_key "project_materials", "projects"
   add_foreign_key "projects", "users"
